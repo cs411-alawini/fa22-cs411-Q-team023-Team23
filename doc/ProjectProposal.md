@@ -18,7 +18,7 @@ uwu
 Users can use live search to find any pokemon with name or number.  
 Users can use advance search to filter pokemons by type and ability.  
 Users can view each pokemon's infomation in detail after select the corresponding picture.  
-Users can use pokemon type calculator which tells the strength and weakness from selected types.  
+Users can use pokemon type calculator which displays the strength and weakness from selected types.  
 Users can mock team makeup for testing a team's overall strength during a battle.  
 
 ## UI Mockup:
