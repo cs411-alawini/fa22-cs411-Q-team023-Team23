@@ -1,15 +1,22 @@
 # PokeBook
 
-## Proejct Summary
+## Proejct Summary:
+uwu
 
-## Description
+## Description:
+uwu
 
-## Usefulness
+## Usefulness:
+uwu
 
-## Realness
+## Realness:
+uwu
 
-## Functionality
+## Functionality:
+uwu
 
-## UI Mockup
+## UI Mockup:
+uwu
 
-## Project work distribution
+## Project work distribution:
+uwu
