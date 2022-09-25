@@ -3,7 +3,7 @@ PokeBook
 
 ## Proejct Summary:
 ///
-For our Project, we will be accessing databases with pokemons. We want user to be able to eaily search for pokemon information by name, number, type and ability. We also provides some useful tools to help user have a better understanding of battle strategy based on strengths and weaknesses of each type.
+This project is an Pokemon gaming assistant application based on website platform in front-end and associated databases in back-end. Generally, the purpose of application is providing users a convenient and useful gaming assistance with information and suggestion of Pokemon. To achieve the goal, we offer users to search Pokemon information specifically by their characters including names, types, abilities and etc, and we provide related suggestion of battle strategy based on their features like strengths and weaknesses. In addition, the application would have other helper functionalities to improve the performance of main functions. 
 ///
 ## Description:
 In this particular project, we are creating an interactive website in which we will provide some insights on Pokemon games based on existing database and API. This website is mostly Pokemon-fans based and will provide overviews and efficient queries for users. For optimal results, are accumulating data for every generation of Pokemon.   
