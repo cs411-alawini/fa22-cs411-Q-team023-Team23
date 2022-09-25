@@ -16,7 +16,9 @@ The fundamental information we are trying to provide basically comes in four cat
 ## Problems:
 There are various websites, forums, and even APIs about Pokemon. We will elaborate problems of each source in the following paragraphs respectively.
 There are countless websites about Pokemon topics, but most of them do not even support basic queries and a considerable amount of them leads users to other websites when they wish to inquire specific information about Pokemon. This trend has greatly lengthened users’ time spent on searching desired data, which violates the purpose of providing quick access and queries of data.  
+  
 Taking a brief look at forums around us, we can find that forums are basically made up by long segments of texts, and users has to read them through in order to acquire desired information. In terms of data visualization and delivery, a search engine (website) about Pokemon can serve the purpose of providing quick and specific information with more efficacy.  
+  
 APIs are good ways to accumulate information, however, only a limited number of the population can to coding, needless to say performing various operations on APIs. What we need is a platform to synthesize millions of data tuples and select desired and relevant data for users.
 
 
