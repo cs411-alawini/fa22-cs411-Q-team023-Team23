@@ -26,4 +26,5 @@ uwu
 
 ## Project work distribution:
 jinyuy2 and jialinh4 will work primarily on the front-end. This includes tasks such as creating the webpage UI, communicating to and from the backend, optimizing user experience, and classifying all categories in an appropriate manner.   
+  
 yifan20 and faruhan2 will work primarily on the back-end. This includes tasks such as selecting data from the user's request, processing the data, and sending back the necessary info to the front end. We are still deciding on frameworks to use for the frontend and backend.
