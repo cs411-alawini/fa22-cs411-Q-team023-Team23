@@ -43,6 +43,7 @@ Users can mock team makeup for testing a team's overall strength during a battle
 We decide to develop a website user interface which allows users to interactive with the back database.
 ![image](https://user-images.githubusercontent.com/54507198/192338290-f9154e28-db11-449e-b495-d4c2a82be357.png)
 This is a UI mockup for the main page of our application, the functions we are going to implement are navigation bar, search bar, filter bar and pokemons.
+
 ![image](https://user-images.githubusercontent.com/54507198/192338400-964bd655-a7f6-4c45-8233-22a9bb8208e8.png)
 This is a mockup after the user clicked each pokemon, and this will be the detailed information for each pokemon.
 
