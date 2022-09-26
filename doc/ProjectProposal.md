@@ -40,7 +40,10 @@ Users can use pokemon type calculator which displays the strength and weakness f
 Users can mock team makeup for testing a team's overall strength during a battle.  
 
 ## UI Mockup:
-uwu
+We decide to develop a website user interface which allows users to interactive with the back database.
+![image](https://user-images.githubusercontent.com/54507198/192338290-f9154e28-db11-449e-b495-d4c2a82be357.png)
+![image](https://user-images.githubusercontent.com/54507198/192338400-964bd655-a7f6-4c45-8233-22a9bb8208e8.png)
+
 
 ## Project work distribution:
 jinyuy2 and jialinh4 will work primarily on the front-end. This includes tasks such as creating the webpage UI, communicating to and from the backend, optimizing user experience, and classifying all categories in an appropriate manner.   
