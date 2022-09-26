@@ -26,10 +26,11 @@ APIs are good ways to accumulate information, however, only a limited number of 
 
 
 ## Usefulness:
-uwu
+It is to be noted that this website would only be useful to people who are interested in Pokemon. However, it would serve as a great tool for its target audience. It would be extremely useful for all users to do quick searches on specific Pokemon and other information. 
+For those who have just started Pokemon, this website can provide essential information such as abilities and features of Pokemon. For users who are familiar with this game, the suggested team formation can also provide additional insight into how to form optimal teams.
 
 ## Realness:
-uwu
+The validity of data can be ensured by several authorized database and APIs. In other words, all of the queries carried out on this website will be real and up-to-date. In terms of suggested team formation, synthesized data is entirely based on raw data.
 
 ## Functionality:
 Users can use live search to find any pokemon with name or number.  
