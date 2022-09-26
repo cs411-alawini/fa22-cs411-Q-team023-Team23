@@ -6,12 +6,15 @@
 This project is an Pokemon gaming assistant application based on website platform in front-end and associated databases in back-end. Generally, the purpose of application is providing users a convenient and useful gaming assistance with information and suggestion of Pokemon. To achieve the goal, we offer users to search Pokemon information specifically by their characters including names, types, abilities and etc, and we provide related suggestion of battle strategy based on their features like strengths and weaknesses. In addition, the application would have other helper functionalities to improve the performance of main functions. 
 
 ## Description:
-In this particular project, we are creating an interactive website in which we will provide some insights on Pokemon games based on existing database and API. This website is mostly Pokemon-fans based and will provide overviews and efficient queries for users. For optimal results, are accumulating data for every generation of Pokemon.   
-The fundamental information we are trying to provide basically comes in four categories:  
-1.	Pokemon search. 
-2.	Ranking of 属性. 
-3.	克制关系图. 
-4.	Simulation of team formation and 养成. 
+In this particular project, we plan to creat an interactive website which provides some insights on Pokemon games based on existing databases and API. The website is mostly Pokemon-fans based, and we develop it as an assistance tool which gives general overview, efficient queries, potential suggestions of Pokemon for users. For optimal results, we are accumulating data for every generation of Pokemon.
+
+The fundamental functions we are trying to provide basically comes in four categories:
+
+1. Pokemon Retrieve
+2. Pokemon Ranking 
+3. Relation Diagram of Property Restraint
+4. Battle Team Simulation and Pokemon Development
+
 
 ## Problems:
 There are various websites, forums, and even APIs about Pokemon. We will elaborate problems of each source in the following paragraphs respectively.
