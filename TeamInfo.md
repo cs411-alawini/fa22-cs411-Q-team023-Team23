@@ -24,5 +24,4 @@
 | Video Link  |      link_to_video     |
 
 ## Project Summary
-
-This is a summary of the project!
+This project is an Pokemon gaming assistant application based on website platform in front-end and associated databases in back-end. Generally, the purpose of application is providing users a convenient and useful gaming assistance with information and suggestion of Pokemon. To achieve the goal, we offer users to search Pokemon information specifically by their characters including names, types, abilities and etc, and we provide related suggestion of battle strategy based on their features like strengths and weaknesses. In addition, the application would have other helper functionalities to improve the performance of main functions.
