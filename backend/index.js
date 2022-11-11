@@ -6,7 +6,7 @@ const cors = require("cors");
 
 
 var db = mysql.createConnection({
-    host:'34.66.234.148',
+    host:'localhost',
     user: 'root',
     password:'pokebook',
     database:'pokebook-365702',
@@ -87,7 +87,7 @@ app.delete("/api/delete/:UserName", (require, response) => {
 //     })
 // });
 
-app.listen(3002, () => {
-    console.log("running on port 3002");
+app.listen(3000, () => {
+    console.log("running on port 3000");
 })
 
