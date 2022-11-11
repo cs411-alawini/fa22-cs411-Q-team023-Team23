@@ -53,7 +53,6 @@ app.get("/api/get/User/:UserId", (require, response) => {
 
 // TODO: Insert a User
 app.post("/api/insert", (require, response) => {
-    const UserId = require.body.UserId;
     const UserName = require.body.UserName;
     const UserEmail = require.body.UserEmail;
     const UserPassword = require.body.UserPassword;
@@ -87,7 +86,7 @@ app.delete("/api/delete/:UserName", (require, response) => {
 //     })
 // });
 
-app.listen(3000, () => {
-    console.log("running on port 3000");
+app.listen(3002, () => {
+    console.log("running on port 3002");
 })
 
