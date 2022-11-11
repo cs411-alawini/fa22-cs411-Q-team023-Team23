@@ -4,89 +4,53 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 
+var connection = mysql.createConnection({
+  host     : '34.66.234.148',
+  user     : 'root',
+  password : 'pokebook',
+  database : 'PokeBook',
+  port: 80
+});
 
-var db = mysql.createConnection({
-    host:'localhost',
-    user: 'root',
-    password:'pokebook',
-    database:'pokebook-365702',
-})
+connection.connect();
 
-// db.connect(function(err) {
-//     if (err) throw err;
-//     var sql = "INSERT INTO `movie_reviews` (`id`,`movieName`, `movieReview`) VALUES (5,'inception', 'good movie');";
-//     db.query(sql, function (err, result) {
-//       if (err) throw err;
-//       console.log(result.affectedRows + " record(s) updated");
+connection.query('SELECT * from User', function(err, rows, fields) {
+    if(err) console.log(err);
+    console.log('The solution is: ', rows);
+    connection.end();
+});
+
+// app.post('/insert', (req, res) => {
+//     const UserId = req.body.UserId;
+//     const UserName = req.body.UserName;
+//     const UserEmail = req.body.UserEmail;
+//     const UserPassword = req.body.UserPassword;
+
+//     db.query('INSERT INTO User (UserId, UserName, UserEmail, UserPassword) values (?, ?, ?, ?)', 
+//     [name, sex, passward], 
+//     (err, result) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             res.send("Values Inserted");
+//         }
 //     });
-//   });
+// });
 
-// app.get('/', (require, response) => {
-//     const sqlInsert = "INSERT INTO `movie_reviews` (`movieName`, `movieReview`) VALUES ('Spider2', 'good movie');";
-//     db.query(sqlInsert, (err, result) => {
-//         response.send("Hello world!!!");
+// app.post('/delete', (req, res) => {
+//     const id = req.body.id;
+//     db.query('DELETE from User where ID = ?', [id],
+//     (err, result) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             res.send("Values Inserted");
+//         }
 //     })
 // })
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-
-// TODO: Get all the users
-app.get("/api/get", (require, response) => {
-    const sqlSelect = "SELECT * FROM User";
-    db.query(sqlSelect, (err, result) => {
-        response.send(result);
-        if (err) throw err;
-    });
-});
-
-// TODO: Get all the information for a specific user with (UserId)
-app.get("/api/get/User/:UserId", (require, response) => {
-    const sqlSelect = "SELECT * FROM Users WHERE UserId = " + require.params.UserId;
-    db.query(sqlSelect, (err, result) => {
-        response.send(result);
-        console.log(result);
-        if (err) throw err;
-    });
-});
-
-// TODO: Insert a User
-app.post("/api/insert", (require, response) => {
-    const UserName = require.body.UserName;
-    const UserEmail = require.body.UserEmail;
-    const UserPassword = require.body.UserPassword;
-
-    const sqlInsert = "INSERT INTO `User` (`UserName`, `UserEmail`, `UserPassword`) VALUES (?,?,?)";
-    db.query(sqlInsert, [UserName, UserEmail, UserPassword], (err, result) => {
-        console.log(error);
-    })
-});
-
-// TODO: Delete a User with UserName
-app.delete("/api/delete/:UserName", (require, response) => {
-    const UserName = require.params.UserName;
-
-    const sqlDelete = "DELETE FROM `movie_reviews` WHERE `movieName`= ?";
-    db.query(sqlDelete, UserName, (err, result) => {
-        if (err) 
-        console.log(error);
-        if (err) throw err;
-    })
-});
-
-// app.put("/api/update/", (require, response) => {
-//     const movieName = require.body.movieName;
-//     const movieReview = require.body.movieReview;
-
-//     const sqlUpdate = "UPDATE `movie_reviews` SET `movieReview` = ? WHERE `movieName`= ?";
-//     db.query(sqlUpdate, [movieReview,movieName ], (err, result) => {
-//         if (err) 
-//         console.log(error);
-//     })
-// });
-
-app.listen(3002, () => {
-    console.log("running on port 3002");
+app.listen(80, () => {
+    console.log("running on port 80");
 })
-
