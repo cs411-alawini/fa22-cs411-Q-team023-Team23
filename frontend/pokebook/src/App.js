@@ -3,90 +3,159 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 
 function App() {
-  const [UserId, setUserId] = useState('');
-  const [UserName, setUserName] = useState('');
-  const [UserEmail, setUserEmail] = useState('');
-  const [UserPassword, setUserPassword] = useState('');
+  const [insertuserName, setInsertUserName] = useState('');
+  const [insertuserPassword, setInsertUserPassword] = useState('');
+  const [insertuserEmail, setInsertUserEmail] = useState('');
+  const [insertuserId, setInsertUserId] = useState('');
+  const [deleteuserId, setDeleteUserId] = useState('');
+  const [userList, setUserList] = useState('');
 
-  const [UserList, setUserList] = useState([]);
 
-  const [newUserName, setNewUserName] = useState("");
 
-  useEffect(() => {
-    Axios.get('https://localhost:3002/api/get').then((response) => {
+
+  const submitInsert = () => { 
+    Axios.post('http://localhost:3002/api/insert', {
+      insertuserId: insertuserId,
+      insertuserName: insertuserName,
+      insertuserPassword: insertuserPassword,
+      insertuserEmail: insertuserEmail
+    });
+    
+  };
+
+  // const submitSearch = () => {
+  //   Axios.get('http://localhost:3002/api/search/keyword?keyword=' + userName).then((response) => {
+  //     setUserList(response.data)
+  //   }) 
+
+  // };
+
+  const overallSearch = () => {
+    Axios.get('http://localhost:3002/api/search/all').then((response) => {
       setUserList(response.data)
-    })
-  },[])
-
-  const submitUser = () => {
-    Axios.post('https://localhost:3002/api/insert', {
-      UserId: UserId,
-      UserName: UserName,
-      UserEmail: UserEmail,
-      UserPassword: UserPassword
     });
 
-    setUserList([
-      ...UserList, {
-        UserId: UserId,
-        UserName: UserName,
-        UserEmail: UserEmail,
-        UserPassword: UserPassword
-      },
-    ]);
+
+
   };
 
-  const deleteUser = (UserName) => {
-    Axios.delete(`http://localhost:3002/api/delete/${UserName}`);
-  };
-
-  const updateUser = (UserName) => {
+  const submitUpdate = (userName, userPassword) => { 
     Axios.put(`http://localhost:3002/api/update`, {
-      UserId: UserId,
-      UserName: newUserName,
-      UserEmail: UserEmail,
-      UserPassword: UserPassword
+      userName: userName,
+      userPassword: userPassword
     });
-    setNewUserName("")
+
   };
 
-  return (
-    <div className="App">
-      <h1>411 Project 1 Stage 4 CRUD Implementation</h1>
+  
 
-      <div className = "form">
-        <label>Id: </label>
-        <input type = "text" name = "UserId" onChange={(e) => {setUserId(e.target.value)}}></input>
-        <label>Name: </label>
-        <input type = "text" name = "UserName" onChange={(e) => {setUserName(e.target.value)}}></input>
-        <label>Email: </label>
-        <input type = "text" name = "UserEmail" onChange={(e) => {setUserEmail(e.target.value)}}></input>
-        <label>Password: </label>
-        <input type = "text" name = "UserPassword" onChange={(e) => {setUserPassword(e.target.value)}}></input>
+  const submitDelete = () => { 
+    Axios.post(`http://localhost:3002/api/delete/${deleteuserId}`, {
+      deleteuserId: deleteuserId
+      
+    });
 
-        <button onClick={submitUser}>Submit</button>
+  };
+  
 
-        {UserList.map((val) => {
-          return (
-            <div className = "card">
-              <h1> UserName: {val.UserName} </h1>
-              <p> UserEmail: {val.UserEmail}</p>
-              <button onClick={() => { deleteUser(val.UserName) }}> Delete</button>
-              <input type="text" id="updateInput" onChange={(e) => {
-                setNewUserName(e.target.value)
-              } }/>
-              <button onClick={() => {
-                updateUser(val.UserName)
-              }}> Update</button>
-              </div>
-          );
+  // return (
+  //   <div className="App">
+  //     <h1> CRUD APPLICATIONS</h1>
+
+  //     <div className="form">
+        
+  //       <label> Insert </label>
+  //       <label> UserName: </label>
+  //       <input type="text" name="userName1" onChange={(e) => {
+  //         setUserName(e.target.value)
+  //       } }/>
+  //       <label> UserPassword:</label>
+  //       <input type="text" name="userPassword1" onChange={(e) => {
+  //         setUserPassword(e.target.value)
+  //       }}/>
+  //       <label> UserEmail:</label>
+  //       <input type="text" name="userEmail1" onChange={(e) => {
+  //         setUserEmail(e.target.value)
+  //       }}/>
+  //       <button onClick={submitInsert}> Submit Insert</button>
+
+
+  //       <label> Search </label>
+  //       <label> UserName: </label>
+  //       <input type="text" name="userName2" onChange={(e) => {
+  //         setUserName(e.target.value)
+  //       } }/>
+  //       <button onClick={submitSearch}> Submit Search</button>
+
+
+  //       <label> Update </label>
+  //       <label> UserName: </label>
+  //       <input type="text" name="userName3" onChange={(e) => {
+  //         setUserName(e.target.value)
+  //       } }/>
+  //       <label> UserPassword:</label>
+  //       <input type="text" name="userPassword3" onChange={(e) => {
+  //         setUserPassword(e.target.value)
+  //       }}/>
+  //       <button onClick={submitUpdate}> Submit Update</button>
+
+
+  //       <label> Delete </label>
+  //       <label> UserName: </label>
+  //       <input type="text" name="userName4" onChange={(e) => {
+  //         setUserName(e.target.value)
+  //       } }/>
+  //       <button onClick={submitDelete}> Submit Delete</button>
+
+
+  //       <button> onClick={overallSearch} Overall Search </button>
+        
+  //       { userList.map((val) => {
+  //           return (
+  //             <div>
+  //               <p>UserName: {val.userName}</p>
+  //               <p>UserPassword: {val.userPassword}</p>
+  //               <p>UserEmail{val.userEmail}</p>
+                
+  //             </div>
+
+  //           )
+  //       })
+
+  //       }
+  //     </div>
+      
+  //   </div>
+  // );
+
+  return ( <div className="form">
+          <label> Insert </label>
+          <label> UserId: </label>
+          <input type="text" name="userId1" onChange={(e) => {
+           setInsertUserId(e.target.value)
+          } }/>
+          <label> UserName: </label>
+          <input type="text" name="userName1" onChange={(e) => {
+           setInsertUserName(e.target.value)
+          } }/>
+          <label> UserPassword:</label>
+          <input type="text" name="userPassword1" onChange={(e) => {
+           setInsertUserPassword(e.target.value)
+          }}/>
+          <label> UserEmail:</label>
+          <input type="text" name="userEmail1" onChange={(e) => {
+           setInsertUserEmail(e.target.value)
+          }}/>
+          <button onClick={submitInsert}> Submit Insert</button>
           
-          ;
-        })}
+         <label> Delete </label>
+         <label> UserId: </label>
+         <input type="text" name="userId4" onChange={(e) => {
+           setDeleteUserId(e.target.value)
+         } }/>
+         <button onClick={submitDelete}> Submit Delete</button>
 
-      </div>
-    </div>
-  );
+          </div> )
 }
 
 export default App;

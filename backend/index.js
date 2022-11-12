@@ -6,80 +6,91 @@ const cors = require("cors");
 
 
 var db = mysql.createConnection({
-    host:'localhost',
+    host:'34.66.234.148',
     user: 'root',
     password:'pokebook',
-    database:'pokebook-365702',
+    database:'pokebook_database',
 })
+
+
+
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-// db.connect(function(err) {
-//     if (err) throw err;
-//     var sql = "INSERT INTO `movie_reviews` (`id`,`movieName`, `movieReview`) VALUES (5,'inception', 'good movie');";
-//     db.query(sql, function (err, result) {
-//       if (err) throw err;
-//       console.log(result.affectedRows + " record(s) updated");
-//     });
-//   });
+app.get("/api/search/all", (require, response) => {
+    const sqlSelect = "SELECT * FROM User";
+    db.query(sqlSelect, (err, result) => {
+        response.send(result);
+        if (err) throw err;
+    });
+});
 
-// app.get('/', (require, response) => {
-//     const sqlInsert = "INSERT INTO `movie_reviews` (`movieName`, `movieReview`) VALUES ('Spider2', 'good movie');";
-//     db.query(sqlInsert, (err, result) => {
-//         response.send("Hello world!!!");
+app.get("/api/search/keyword?keyword=' + userName", (require, response) => {
+    const sqlSelect = "SELECT * FROM Users WHERE UserName = " + require.params.userName;
+    db.query(sqlSelect, (err, result) => {
+        response.send(result);
+        console.log(result);
+        if (err) throw err;
+    });
+});
+
+
+
+app.post("/api/insert", (require, response) => {
+    const InsertuserId = require.body.insertuserId;
+    const InsertuserName = require.body.insertuserName;
+    const InsertuserEmail = require.body.insertuserEmail;
+    const InsertuserPassword = require.body.insertuserPassword;
+
+    const sqlInsert = "INSERT INTO User (UserId, UserName, UserEmail, UserPassword) VALUES (?,?,?,?);";
+    db.query(sqlInsert, [InsertuserId, InsertuserName, InsertuserEmail, InsertuserPassword], (err, result) => {
+        console.log(InsertuserId);
+        console.log(InsertuserName);
+        console.log(InsertuserEmail);
+        console.log(InsertuserPassword);
+        if (err) console.log(err);
+    })
+});
+
+// app.delete("/api/delete/:deleteuserId", (require, response) => {
+//     const DeleteuserId = require.body.deleteuserId;
+
+//     const sqlDelete = "DELETE FROM User WHERE UserId = ?;";
+//     db.query(sqlDelete, [DeleteuserId], (err, result) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else {
+//             result.send("User Deleted");}
 //     })
-// })
+// });
 
-app.post('/insert', (req, res) => {
-    const UserId = req.body.UserId;
-    const UserName = req.body.UserName;
-    const UserEmail = req.body.UserEmail;
-    const UserPassward = req.body.UserPassward;
-
-    db.query('INSERT INTO User (UserId, UserName, UserEmail, UserPassward) values (?, ?, ?, ?)', 
-    [UserId, UserName, UserEmail, UserPassward], 
+app.post("/api/delete/:deleteuserId", (require, response) => {
+    const DeleteuserId = require.body.deleteuserId;
+    db.query('DELETE from User where UserId = ?', [DeleteuserId],
     (err, result) => {
         if (err) {
             console.log(err);
         }
         else {
-            res.send("Values Inserted");
+            result.send("User Deleted");
         }
-    });
+    })
+})
+
+app.put("/api/update", (require, response) => {
+    const UserName = require.body.userName;
+    const UserPassword = require.body.userPassword;
+
+    const sqlUpdate = "UPDATE `User` SET `movieReview` = ? WHERE `movieName`= ?";
+    db.query(sqlUpdate, [UserName, UserPassword], (err, result) => {
+        if (err) 
+        console.log(error);
+    })
 });
-
-// app.post("/api/insert", (require, response) => {
-//     const movieName = require.body.movieName;
-//     const movieReview = require.body.movieReview;
-
-//     const sqlInsert = "INSERT INTO `movie_reviews` (`movieName`, `movieReview`) VALUES (?,?)";
-//     db.query(sqlInsert, [movieName, movieReview], (err, result) => {
-//         console.log(error);
-//     })
-// });
-
-// app.delete("/api/delete/:movieName", (require, response) => {
-//     const movieName = require.params.movieName;
-
-//     const sqlDelete = "DELETE FROM `movie_reviews` WHERE `movieName`= ?";
-//     db.query(sqlDelete, movieName, (err, result) => {
-//         if (err) 
-//         console.log(error);
-//     })
-// });
-
-// app.put("/api/update/", (require, response) => {
-//     const movieName = require.body.movieName;
-//     const movieReview = require.body.movieReview;
-
-//     const sqlUpdate = "UPDATE `movie_reviews` SET `movieReview` = ? WHERE `movieName`= ?";
-//     db.query(sqlUpdate, [movieReview,movieName ], (err, result) => {
-//         if (err) 
-//         console.log(error);
-//     })
-// });
 
 app.listen(3002, () => {
     console.log("running on port 3002");
