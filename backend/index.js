@@ -60,7 +60,7 @@ app.post("/api/advance1search", (req, res) => {
         GROUP BY t2.TypeId)\
     GROUP BY t1.TypeId, t1.TypeName, p1.PokemonName, p1.Attack, p1.Defense\
     ORDER BY t1.TypeName, p1.PokemonName\
-    Limit 15", [],
+    Limit 5", [],
     (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -88,7 +88,7 @@ app.post("/api/advance2search", (req, res) => {
         FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t1 ON (pt2.FirstTypeId = t1.TypeId) JOIN Type t2 ON (pt2.SecondTypeId = t2.TypeId)\
         WHERE (t1.TypeName like '%Grass%' OR t2.TypeName like '%Grass%') AND p2.Generation >= 4\
         ORDER BY p2.PokemonId ASC)\
-        LIMIT 15", [],
+        LIMIT 5", [],
     (err, result) => {
         if (err) throw err;
         res.send(result);
