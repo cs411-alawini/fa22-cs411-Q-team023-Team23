@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from "react";
 import Axios from 'axios';
@@ -14,13 +13,13 @@ function App() {
   const [newUserName, setNewUserName] = useState("");
 
   useEffect(() => {
-    Axios.get('https://localhost:3001/api/get').then((response) => {
+    Axios.get('https://localhost:3002/api/get').then((response) => {
       setUserList(response.data)
     })
   },[])
 
   const submitUser = () => {
-    Axios.post('https://localhost:3001/api/insert', {
+    Axios.post('https://localhost:3002/api/insert', {
       UserId: UserId,
       UserName: UserName,
       UserEmail: UserEmail,
@@ -38,11 +37,11 @@ function App() {
   };
 
   const deleteUser = (UserName) => {
-    Axios.delete(`http://localhost:3001/api/delete/${UserName}`);
+    Axios.delete(`http://localhost:3002/api/delete/${UserName}`);
   };
 
   const updateUser = (UserName) => {
-    Axios.put(`http://localhost:3001/api/update`, {
+    Axios.put(`http://localhost:3002/api/update`, {
       UserId: UserId,
       UserName: newUserName,
       UserEmail: UserEmail,
