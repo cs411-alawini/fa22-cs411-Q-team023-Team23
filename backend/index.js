@@ -12,6 +12,10 @@ var db = mysql.createConnection({
     database:'pokebook_database',
 })
 
+
+
+
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -91,3 +95,4 @@ app.put("/api/update", (require, response) => {
 app.listen(3002, () => {
     console.log("running on port 3002");
 })
+
