@@ -26,6 +26,7 @@ app.get("/api/get", (req, res) => {
 
 app.post("/api/search", (req, res) => {
     const UserName = req.body.searchuserName;
+    // console.log('searching');
     db.query('SELECT * FROM User WHERE UserName = ?', [UserName],
     (err, result) => {
         if (err) throw err;
