@@ -11,7 +11,8 @@ function App() {
   const [updateuserName, setUpdateUserName] = useState('');
   const [updateuserPassword, setUpdateUserPassword] = useState('');
   const [searchuserName, setSearchUserName] = useState('');
-  const [userList, setUserList] = useState('');
+  const [searchResult, setSearchResult] = useState('');
+  const [userList, setUserList] = useState([]);
 
 
 
@@ -40,7 +41,12 @@ function App() {
 
   const submitSearch = () => {
     Axios.get('http://localhost:3002/api/search/keyword?keyword=' + searchuserName).then((response) => {
-      setUserList(response.data)
+      if (response.data.length != 0) {
+        setUserList(response.data);
+        setSearchResult('Here is your result!\n');
+      } else {
+        setSearchResult('No records according to your conditions!\n');
+      }
     }) 
   };
 
@@ -55,6 +61,8 @@ function App() {
   return ( 
         <div className="form">
         <h1>CS411 CURD Functions</h1>
+
+        {/* Insert */}
         <label> Insert </label>
         <label> UserId: </label>
         <input type="text" name="userId1" onChange={(e) => {
@@ -74,6 +82,7 @@ function App() {
         }}/>
         <button onClick={submitInsert}> Submit Insert</button>
         
+        {/* Delete */}
         <br></br><label> Delete </label>
         <label> UserId: </label>
         <input type="text" name="userId4" onChange={(e) => {
@@ -81,6 +90,7 @@ function App() {
         }}/>
         <button onClick={submitDelete}> Submit Delete</button>
 
+        {/* Update */}
         <br></br><label> Update </label>
         <label> UserName: </label>
         <input type="text" name="userName3" onChange={(e) => {
@@ -92,12 +102,25 @@ function App() {
         }}/>
         <button onClick={submitUpdate}> Submit Update</button>
 
+        {/* Search */}
         <br></br><label> Search </label>
         <label> UserName: </label>
         <input type="text" name="userName2" onChange={(e) => {
           setSearchUserName(e.target.value)
         }}/>
         <button onClick={submitSearch}> Submit Search</button>
+
+        <div>{searchResult}</div>
+        {userList.map((val, key) => {
+          return (
+          <div className='SearchResult'> 
+            <h3>UserId: {val.UserId}</h3> 
+            <h3>UserName: {val.UserName}</h3>
+            <h3>UserEmail: {val.UserEmail}</h3> 
+            <h3>UserPassword: {val.UserPassword}</h3> 
+          </div>
+          );
+        })}
 
         </div> )
 }
