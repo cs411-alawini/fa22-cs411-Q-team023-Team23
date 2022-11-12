@@ -15,7 +15,11 @@ function App() {
   const [userList, setUserList] = useState([]);
 
 
-
+  useEffect(() => {
+    Axios.get('https://localhost:3002/api/get').then((response) => {
+      setUserList(response.data)
+    })
+  },[])
 
   const submitInsert = () => { 
     Axios.post('http://localhost:3002/api/insert', {

@@ -16,13 +16,13 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.get("/api/search/all", (req, res) => {
-//     const sqlSelect = "SELECT * FROM User";
-//     db.query(sqlSelect, (err, result) => {
-//         res.send(result);
-//         if (err) throw err;
-//     });
-// });
+app.get("/api/get", (req, res) => {
+    const sqlSelect = "SELECT * FROM User";
+    db.query(sqlSelect, (err, result) => {
+        res.send(result);
+        if (err) throw err;
+    });
+});
 
 app.post("/api/search", (req, res) => {
     const UserName = req.body.searchuserName;
