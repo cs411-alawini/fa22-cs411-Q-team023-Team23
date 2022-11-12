@@ -4,53 +4,72 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 
-var connection = mysql.createConnection({
-  host     : '34.66.234.148',
-  user     : 'root',
-  password : 'pokebook',
-  database : 'PokeBook',
-  port: 80
-});
 
-connection.connect();
+var db = mysql.createConnection({
+    host:'localhost',
+    user: 'root',
+    password:'pokebook',
+    database:'pokebook-365702',
+})
 
-connection.query('SELECT * from User', function(err, rows, fields) {
-    if(err) console.log(err);
-    console.log('The solution is: ', rows);
-    connection.end();
-});
-
-// app.post('/insert', (req, res) => {
-//     const UserId = req.body.UserId;
-//     const UserName = req.body.UserName;
-//     const UserEmail = req.body.UserEmail;
-//     const UserPassword = req.body.UserPassword;
-
-//     db.query('INSERT INTO User (UserId, UserName, UserEmail, UserPassword) values (?, ?, ?, ?)', 
-//     [name, sex, passward], 
-//     (err, result) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             res.send("Values Inserted");
-//         }
+// db.connect(function(err) {
+//     if (err) throw err;
+//     var sql = "INSERT INTO `movie_reviews` (`id`,`movieName`, `movieReview`) VALUES (5,'inception', 'good movie');";
+//     db.query(sql, function (err, result) {
+//       if (err) throw err;
+//       console.log(result.affectedRows + " record(s) updated");
 //     });
-// });
+//   });
 
-// app.post('/delete', (req, res) => {
-//     const id = req.body.id;
-//     db.query('DELETE from User where ID = ?', [id],
-//     (err, result) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             res.send("Values Inserted");
-//         }
+// app.get('/', (require, response) => {
+//     const sqlInsert = "INSERT INTO `movie_reviews` (`movieName`, `movieReview`) VALUES ('Spider2', 'good movie');";
+//     db.query(sqlInsert, (err, result) => {
+//         response.send("Hello world!!!");
 //     })
 // })
 
-app.listen(80, () => {
-    console.log("running on port 80");
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.get("/api/get", (require, response) => {
+    const sqlSelect = "SELECT * FROM movie_reviews";
+    db.query(sqlSelect, (err, result) => {
+        response.send(result);
+    });
+});
+
+app.post("/api/insert", (require, response) => {
+    const movieName = require.body.movieName;
+    const movieReview = require.body.movieReview;
+
+    const sqlInsert = "INSERT INTO `movie_reviews` (`movieName`, `movieReview`) VALUES (?,?)";
+    db.query(sqlInsert, [movieName, movieReview], (err, result) => {
+        console.log(error);
+    })
+});
+
+app.delete("/api/delete/:movieName", (require, response) => {
+    const movieName = require.params.movieName;
+
+    const sqlDelete = "DELETE FROM `movie_reviews` WHERE `movieName`= ?";
+    db.query(sqlDelete, movieName, (err, result) => {
+        if (err) 
+        console.log(error);
+    })
+});
+
+app.put("/api/update/", (require, response) => {
+    const movieName = require.body.movieName;
+    const movieReview = require.body.movieReview;
+
+    const sqlUpdate = "UPDATE `movie_reviews` SET `movieReview` = ? WHERE `movieName`= ?";
+    db.query(sqlUpdate, [movieReview,movieName ], (err, result) => {
+        if (err) 
+        console.log(error);
+    })
+});
+
+app.listen(3002, () => {
+    console.log("running on port 3002");
 })
