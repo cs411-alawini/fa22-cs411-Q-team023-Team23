@@ -41,40 +41,13 @@ function App() {
   //   Axios.get('http://localhost:3002/api/search/keyword?keyword=' + userName).then((response) => {
   //     setUserList(response.data)
   //   }) 
-
   // };
 
   const overallSearch = () => {
     Axios.get('http://localhost:3002/api/search/all').then((response) => {
       setUserList(response.data)
     });
-
-
-
   };
-  
-
-  // return (
-  //   <div className="App">
-  //     <h1> CRUD APPLICATIONS</h1>
-
-  //     <div className="form">
-        
-  //       <label> Insert </label>
-  //       <label> UserName: </label>
-  //       <input type="text" name="userName1" onChange={(e) => {
-  //         setUserName(e.target.value)
-  //       } }/>
-  //       <label> UserPassword:</label>
-  //       <input type="text" name="userPassword1" onChange={(e) => {
-  //         setUserPassword(e.target.value)
-  //       }}/>
-  //       <label> UserEmail:</label>
-  //       <input type="text" name="userEmail1" onChange={(e) => {
-  //         setUserEmail(e.target.value)
-  //       }}/>
-  //       <button onClick={submitInsert}> Submit Insert</button>
-
 
   //       <label> Search </label>
   //       <label> UserName: </label>
@@ -83,63 +56,34 @@ function App() {
   //       } }/>
   //       <button onClick={submitSearch}> Submit Search</button>
 
-
-
-
-  //       <label> Delete </label>
-  //       <label> UserName: </label>
-  //       <input type="text" name="userName4" onChange={(e) => {
-  //         setUserName(e.target.value)
-  //       } }/>
-  //       <button onClick={submitDelete}> Submit Delete</button>
-
-
-  //       <button> onClick={overallSearch} Overall Search </button>
+  return ( 
+        <div className="form">
+        <h1>CS411 CURD Functions</h1>
+        <label> Insert </label>
+        <label> UserId: </label>
+        <input type="text" name="userId1" onChange={(e) => {
+          setInsertUserId(e.target.value)
+        } }/>
+        <label> UserName: </label>
+        <input type="text" name="userName1" onChange={(e) => {
+          setInsertUserName(e.target.value)
+        } }/>
+        <label> UserPassword:</label>
+        <input type="text" name="userPassword1" onChange={(e) => {
+          setInsertUserPassword(e.target.value)
+        }}/>
+        <label> UserEmail:</label>
+        <input type="text" name="userEmail1" onChange={(e) => {
+          setInsertUserEmail(e.target.value)
+        }}/>
+        <button onClick={submitInsert}> Submit Insert</button>
         
-  //       { userList.map((val) => {
-  //           return (
-  //             <div>
-  //               <p>UserName: {val.userName}</p>
-  //               <p>UserPassword: {val.userPassword}</p>
-  //               <p>UserEmail{val.userEmail}</p>
-                
-  //             </div>
-
-  //           )
-  //       })
-
-  //       }
-  //     </div>
-      
-  //   </div>
-  // );
-
-  return ( <div className="form">
-          <label> Insert </label>
-          <label> UserId: </label>
-          <input type="text" name="userId1" onChange={(e) => {
-           setInsertUserId(e.target.value)
-          } }/>
-          <label> UserName: </label>
-          <input type="text" name="userName1" onChange={(e) => {
-           setInsertUserName(e.target.value)
-          } }/>
-          <label> UserPassword:</label>
-          <input type="text" name="userPassword1" onChange={(e) => {
-           setInsertUserPassword(e.target.value)
-          }}/>
-          <label> UserEmail:</label>
-          <input type="text" name="userEmail1" onChange={(e) => {
-           setInsertUserEmail(e.target.value)
-          }}/>
-          <button onClick={submitInsert}> Submit Insert</button>
-          
-          <br></br><label> Delete </label>
-         <label> UserId: </label>
-         <input type="text" name="userId4" onChange={(e) => {
-           setDeleteUserId(e.target.value)
-         } }/>
-         <button onClick={submitDelete}> Submit Delete</button>
+        <br></br><label> Delete </label>
+        <label> UserId: </label>
+        <input type="text" name="userId4" onChange={(e) => {
+          setDeleteUserId(e.target.value)
+        } }/>
+        <button onClick={submitDelete}> Submit Delete</button>
 
         <br></br><label> Update </label>
         <label> UserName: </label>
@@ -152,7 +96,7 @@ function App() {
         }}/>
         <button onClick={submitUpdate}> Submit Update</button>
 
-          </div> )
+        </div> )
 }
 
 export default App;
