@@ -63,7 +63,7 @@ function App() {
   };
 
   const submitAdvance1 = () => {
-    Axios.post('http://localhost:3002/api/advance1', {
+    Axios.post('http://localhost:3002/api/advance1search', {
     }).then((response) => {
       if (response.data.length > 0) {
         setadvance1List(response.data);
@@ -75,7 +75,7 @@ function App() {
   };
 
   const submitAdvance2 = () => {
-    Axios.post('http://localhost:3002/api/advance2', {
+    Axios.post('http://localhost:3002/api/advance2search', {
     }).then((response) => {
       if (response.data.length > 0) {
         setadvance2List(response.data);
@@ -161,10 +161,11 @@ function App() {
         {/* AD 1 */}
         <br></br><label> AD 1 </label>
         <button onClick={submitAdvance1}> Submit Advance1 </button>
+
         <div>{advance1Result}</div>
         {advance1List.map((val) => {
           return (
-          <div className='Advance2Result'> 
+          <div className='Advance1Result'> 
             <h3>TypeName: {val.TypeName}</h3> 
             <h3>PokemonName: {val.PokemonName}</h3>
             <h3>Attack: {val.Attack}</h3> 
@@ -178,6 +179,7 @@ function App() {
         {/* AD 2 */}
         <br></br><label> AD 2 </label>
         <button onClick={submitAdvance2}> Submit Advance2 </button>
+
         <div>{advance2Result}</div>
         {advance2List.map((val) => {
           return (

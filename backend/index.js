@@ -37,29 +37,30 @@ app.post("/api/search", (req, res) => {
 
 app.post("/api/advance1search", (req, res) => {
     // console.log('searching');
-    db.query("SELECT t1.TypeName, p1.PokemonName, p1.Attack, \
-    (SELECT AVG(p2.Attack)\
-                FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
-    Where t1.TypeId = t2.TypeId\
-    GROUP BY t2.TypeId) as AvgAttack, \
-    p1.Defense, \
-    (SELECT AVG(p2.Defense)\
-                FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
-    Where t1.TypeId = t2.TypeId\
-    GROUP BY t2.TypeId) as AvgDefense\
-FROM (Pokemon p1 LEFT JOIN PokemonType pt1 on p1.PokemonId = pt1.PokemonId) JOIN Type t1 ON (pt1.FirstTypeId = t1.TypeId)\
-WHERE p1.Attack > (SELECT AVG(p2.Attack)\
-                FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
-    Where t1.TypeId = t2.TypeId\
-    GROUP BY t2.TypeId)\
-    AND    \
- p1.Defense > (SELECT AVG(p2.Defense)\
-                FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
-    Where t1.TypeId = t2.TypeId\
-    GROUP BY t2.TypeId)\
-GROUP BY t1.TypeId, t1.TypeName, p1.PokemonName, p1.Attack, p1.Defense\
-ORDER BY t1.TypeName, p1.PokemonName\
-Limit 15", [],
+    db.query(
+        "SELECT t1.TypeName, p1.PokemonName, p1.Attack, \
+        (SELECT AVG(p2.Attack)\
+                    FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
+        Where t1.TypeId = t2.TypeId\
+        GROUP BY t2.TypeId) as AvgAttack, \
+        p1.Defense, \
+        (SELECT AVG(p2.Defense)\
+                    FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
+        Where t1.TypeId = t2.TypeId\
+        GROUP BY t2.TypeId) as AvgDefense\
+    FROM (Pokemon p1 LEFT JOIN PokemonType pt1 on p1.PokemonId = pt1.PokemonId) JOIN Type t1 ON (pt1.FirstTypeId = t1.TypeId)\
+    WHERE p1.Attack > (SELECT AVG(p2.Attack)\
+                    FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
+        Where t1.TypeId = t2.TypeId\
+        GROUP BY t2.TypeId)\
+        AND    \
+    p1.Defense > (SELECT AVG(p2.Defense)\
+                    FROM (Pokemon p2 LEFT JOIN PokemonType pt2 on p2.PokemonId = pt2.PokemonId) JOIN Type t2 ON (pt2.FirstTypeId = t2.TypeId)\
+        Where t1.TypeId = t2.TypeId\
+        GROUP BY t2.TypeId)\
+    GROUP BY t1.TypeId, t1.TypeName, p1.PokemonName, p1.Attack, p1.Defense\
+    ORDER BY t1.TypeName, p1.PokemonName\
+    Limit 15", [],
     (err, result) => {
         if (err) throw err;
         res.send(result);
