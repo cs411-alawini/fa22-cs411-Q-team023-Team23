@@ -8,6 +8,8 @@ function App() {
   const [insertuserEmail, setInsertUserEmail] = useState('');
   const [insertuserId, setInsertUserId] = useState('');
   const [deleteuserId, setDeleteUserId] = useState('');
+  const [updateuserName, setUpdateUserName] = useState('');
+  const [updateuserPassword, setUpdateUserPassword] = useState('');
   const [userList, setUserList] = useState('');
 
 
@@ -20,7 +22,19 @@ function App() {
       insertuserPassword: insertuserPassword,
       insertuserEmail: insertuserEmail
     });
-    
+  };
+
+  const submitDelete = () => { 
+    Axios.post(`http://localhost:3002/api/delete/${deleteuserId}`, {
+      deleteuserId: deleteuserId
+    });
+  };
+
+  const submitUpdate = () => { 
+    Axios.put(`http://localhost:3002/api/update/${updateuserName,updateuserPassword}`, {
+      updateuserName: updateuserName,
+      updateuserPassword: updateuserPassword,
+    });
   };
 
   // const submitSearch = () => {
@@ -36,24 +50,6 @@ function App() {
     });
 
 
-
-  };
-
-  const submitUpdate = (userName, userPassword) => { 
-    Axios.put(`http://localhost:3002/api/update`, {
-      userName: userName,
-      userPassword: userPassword
-    });
-
-  };
-
-  
-
-  const submitDelete = () => { 
-    Axios.post(`http://localhost:3002/api/delete/${deleteuserId}`, {
-      deleteuserId: deleteuserId
-      
-    });
 
   };
   
@@ -88,16 +84,6 @@ function App() {
   //       <button onClick={submitSearch}> Submit Search</button>
 
 
-  //       <label> Update </label>
-  //       <label> UserName: </label>
-  //       <input type="text" name="userName3" onChange={(e) => {
-  //         setUserName(e.target.value)
-  //       } }/>
-  //       <label> UserPassword:</label>
-  //       <input type="text" name="userPassword3" onChange={(e) => {
-  //         setUserPassword(e.target.value)
-  //       }}/>
-  //       <button onClick={submitUpdate}> Submit Update</button>
 
 
   //       <label> Delete </label>
@@ -148,12 +134,23 @@ function App() {
           }}/>
           <button onClick={submitInsert}> Submit Insert</button>
           
-         <label> Delete </label>
+          <br></br><label> Delete </label>
          <label> UserId: </label>
          <input type="text" name="userId4" onChange={(e) => {
            setDeleteUserId(e.target.value)
          } }/>
          <button onClick={submitDelete}> Submit Delete</button>
+
+        <br></br><label> Update </label>
+        <label> UserName: </label>
+        <input type="text" name="userName3" onChange={(e) => {
+          setUpdateUserName(e.target.value)
+        } }/>
+        <label> UserPassword:</label>
+        <input type="text" name="userPassword3" onChange={(e) => {
+          setUpdateUserPassword(e.target.value)
+        }}/>
+        <button onClick={submitUpdate}> Submit Update</button>
 
           </div> )
 }
