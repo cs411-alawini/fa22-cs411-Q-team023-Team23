@@ -16,17 +16,18 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/api/search/all", (req, res) => {
-    const sqlSelect = "SELECT * FROM User";
-    db.query(sqlSelect, (err, result) => {
-        res.send(result);
-        if (err) throw err;
-    });
-});
+// app.get("/api/search/all", (req, res) => {
+//     const sqlSelect = "SELECT * FROM User";
+//     db.query(sqlSelect, (err, result) => {
+//         res.send(result);
+//         if (err) throw err;
+//     });
+// });
 
-app.get("/api/search/keyword?keyword=' + searchuserName", (req, res) => {
-    const sqlSelect = "SELECT * FROM User WHERE UserName = " + req.params.searchuserName;
-    db.query(sqlSelect, (err, result) => {
+app.post("/api/search", (req, res) => {
+    const UserName = req.body.searchuserName;
+    db.query('SELECT * FROM User WHERE UserName = ?', [UserName],
+    (err, result) => {
         if (err) throw err;
         res.send(result);
         console.log(result);

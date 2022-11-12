@@ -40,21 +40,23 @@ function App() {
   };
 
   const submitSearch = () => {
-    Axios.get('http://localhost:3002/api/search/keyword?keyword=' + searchuserName).then((response) => {
-      if (response.data.length != 0) {
+    Axios.post('http://localhost:3002/api/search', {
+      searchuserName: searchuserName
+    }).then((response) => {
+      if (response.data.length > 0) {
         setUserList(response.data);
         setSearchResult('Here is your result!\n');
       } else {
         setSearchResult('No records according to your conditions!\n');
       }
-    }) 
-  };
-
-  const overallSearch = () => {
-    Axios.get('http://localhost:3002/api/search/all').then((response) => {
-      setUserList(response.data)
     });
   };
+
+  // const overallSearch = () => {
+  //   Axios.get('http://localhost:3002/api/search/all').then((response) => {
+  //     setUserList(response.data)
+  //   });
+  // };
 
 
   return ( 
@@ -110,7 +112,7 @@ function App() {
         <button onClick={submitSearch}> Submit Search</button>
 
         <div>{searchResult}</div>
-        {userList.map((val, key) => {
+        {userList.map((val) => {
           return (
           <div className='SearchResult'> 
             <h3>UserId: {val.UserId}</h3> 
