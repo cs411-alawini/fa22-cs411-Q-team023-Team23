@@ -10,6 +10,7 @@ function App() {
   const [deleteuserId, setDeleteUserId] = useState('');
   const [updateuserName, setUpdateUserName] = useState('');
   const [updateuserPassword, setUpdateUserPassword] = useState('');
+  const [searchuserName, setSearchUserName] = useState('');
   const [userList, setUserList] = useState('');
 
 
@@ -37,11 +38,11 @@ function App() {
     });
   };
 
-  // const submitSearch = () => {
-  //   Axios.get('http://localhost:3002/api/search/keyword?keyword=' + userName).then((response) => {
-  //     setUserList(response.data)
-  //   }) 
-  // };
+  const submitSearch = () => {
+    Axios.get('http://localhost:3002/api/search/keyword?keyword=' + searchuserName).then((response) => {
+      setUserList(response.data)
+    }) 
+  };
 
   const overallSearch = () => {
     Axios.get('http://localhost:3002/api/search/all').then((response) => {
@@ -49,12 +50,7 @@ function App() {
     });
   };
 
-  //       <label> Search </label>
-  //       <label> UserName: </label>
-  //       <input type="text" name="userName2" onChange={(e) => {
-  //         setUserName(e.target.value)
-  //       } }/>
-  //       <button onClick={submitSearch}> Submit Search</button>
+
 
   return ( 
         <div className="form">
@@ -63,11 +59,11 @@ function App() {
         <label> UserId: </label>
         <input type="text" name="userId1" onChange={(e) => {
           setInsertUserId(e.target.value)
-        } }/>
+        }}/>
         <label> UserName: </label>
         <input type="text" name="userName1" onChange={(e) => {
           setInsertUserName(e.target.value)
-        } }/>
+        }}/>
         <label> UserPassword:</label>
         <input type="text" name="userPassword1" onChange={(e) => {
           setInsertUserPassword(e.target.value)
@@ -82,19 +78,26 @@ function App() {
         <label> UserId: </label>
         <input type="text" name="userId4" onChange={(e) => {
           setDeleteUserId(e.target.value)
-        } }/>
+        }}/>
         <button onClick={submitDelete}> Submit Delete</button>
 
         <br></br><label> Update </label>
         <label> UserName: </label>
         <input type="text" name="userName3" onChange={(e) => {
           setUpdateUserName(e.target.value)
-        } }/>
+        }}/>
         <label> UserPassword:</label>
         <input type="text" name="userPassword3" onChange={(e) => {
           setUpdateUserPassword(e.target.value)
         }}/>
         <button onClick={submitUpdate}> Submit Update</button>
+
+        <br></br><label> Search </label>
+        <label> UserName: </label>
+        <input type="text" name="userName2" onChange={(e) => {
+          setSearchUserName(e.target.value)
+        }}/>
+        <button onClick={submitSearch}> Submit Search</button>
 
         </div> )
 }
