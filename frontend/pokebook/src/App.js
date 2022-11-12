@@ -127,6 +127,14 @@ function App() {
           );
         })}
 
+        {/* AD 1 */}
+        <br></br><label> AD 1 </label>
+        <button> Advanced Query 1</button>
+
+        {/* AD 2 */}
+        <br></br><label> AD 2 </label>
+        <button> Advanced Query 2</button>
+
         </div> )
 }
 
