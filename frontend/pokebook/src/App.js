@@ -31,7 +31,7 @@ function App() {
   };
 
   const submitUpdate = () => { 
-    Axios.put(`http://localhost:3002/api/update/${updateuserName,updateuserPassword}`, {
+    Axios.put(`http://localhost:3002/api/update`, {
       updateuserName: updateuserName,
       updateuserPassword: updateuserPassword,
     });

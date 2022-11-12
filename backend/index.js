@@ -1,8 +1,8 @@
-const express = req("express");
-const bodyParser = req("body-parser");
+const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
-const mysql = req("mysql");
-const cors = req("cors");
+const mysql = require("mysql");
+const cors = require("cors");
 
 
 var db = mysql.createConnection({
@@ -61,7 +61,7 @@ app.post("/api/delete/:deleteuserId", (req, res) => {
     })
 })
 
-app.put("/api/update/:updateuserName/:updateuserPassword", (req, res) => {
+app.put("/api/update", (req, res) => {
     const UserPassword = req.body.updateuserPassword;
     const UserName = req.body.updateuserName;
     db.query('Update User SET UserPassword = ? WHERE UserName = ?', [UserPassword, UserName],
