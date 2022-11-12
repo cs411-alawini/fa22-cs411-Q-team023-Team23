@@ -24,12 +24,12 @@ app.get("/api/search/all", (req, res) => {
     });
 });
 
-app.get("/api/search/keyword?keyword=' + userName", (req, res) => {
-    const sqlSelect = "SELECT * FROM Users WHERE UserName = " + req.params.userName;
+app.get("/api/search/keyword?keyword=' + searchuserName", (req, res) => {
+    const sqlSelect = "SELECT * FROM User WHERE UserName = " + req.params.searchuserName;
     db.query(sqlSelect, (err, result) => {
+        if (err) throw err;
         res.send(result);
         console.log(result);
-        if (err) throw err;
     });
 });
 

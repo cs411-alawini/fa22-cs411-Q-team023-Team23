@@ -57,7 +57,6 @@ function App() {
   };
 
 
-
   return ( 
         <div className="form">
         <h1>CS411 CURD Functions</h1>
