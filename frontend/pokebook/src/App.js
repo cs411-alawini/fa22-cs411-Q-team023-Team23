@@ -56,11 +56,11 @@ function App() {
     });
   };
 
-  // const overallSearch = () => {
-  //   Axios.get('http://localhost:3002/api/search/all').then((response) => {
-  //     setUserList(response.data)
-  //   });
-  // };
+  const overallSearch = () => {
+    Axios.get('http://localhost:3002/api/search/all').then((response) => {
+      setUserList(response.data)
+    });
+  };
 
 
   return ( 
