@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import Axios from 'axios';
 
 function App() {
+  // CRUD User Table
   const [insertuserName, setInsertUserName] = useState('');
   const [insertuserPassword, setInsertUserPassword] = useState('');
   const [insertuserEmail, setInsertUserEmail] = useState('');
@@ -14,15 +15,34 @@ function App() {
   const [searchResult, setSearchResult] = useState('');
   const [userList, setUserList] = useState([]);
   
-  // Pokemon Table
+  // Search Pokemon Table
   const [searchpokemonName, setSearchPokemonName] = useState('');
   const [searchpokemonResult, setSearchPokemonResult] = useState('');
   const [pokemonList, setPokemonList] = useState([]);
-  ////
 
+  // Add new Pokemon
+  const [insertPokemonId, setInsertPokemonId] = useState('');
+  const [insertPokemonName, setInsertPokemonName] = useState('');
+  const [insertPokemonGeneration, setInsertPokemonGeneration] = useState('');
+  const [insertPokemonHeight, setInsertPokemonHeight] = useState('');
+  const [insertPokemonWeight, setInsertPokemonWeight] = useState('');
+
+  const [insertPokemonTotal, setInsertPokemonTotal] = useState('');
+  const [insertPokemonHp, setInsertPokemonHp] = useState('');
+  const [insertPokemonAttack, setInsertPokemonAttack] = useState('');
+  const [insertPokemonDefense, setInsertPokemonDefense] = useState('');
+  const [insertPokemonSpeAttack, setInsertPokemonSpeAttack] = useState('');
+
+  const [insertPokemonSpeDefense, setInsertPokemonSpeDefense] = useState('');
+  const [insertPokemonSpeed, setInsertPokemonSpeed] = useState('');
+  const [insertPokemonFirstTypeId, setInsertPokemonFirstTypeId] = useState('');
+  const [insertPokemonSecondTypeId, setInsertPokemonSecondTypeId] = useState('');
+
+  // AD1
   const [advance1Result, setadvance1Result] = useState('');
   const [advance1List, setadvance1List] = useState([]);
 
+  // AD2
   const [advance2Result, setadvance2Result] = useState('');
   const [advance2List, setadvance2List] = useState([]);
 
@@ -39,6 +59,27 @@ function App() {
       insertuserName: insertuserName,
       insertuserPassword: insertuserPassword,
       insertuserEmail: insertuserEmail
+    });
+  };
+
+  const submitPokemonInsert = () => { 
+    Axios.post('http://localhost:3002/api/pokemoninsert', {
+      insertPokemonId: insertPokemonId,
+      insertPokemonName: insertPokemonName,
+      insertPokemonGeneration: insertPokemonGeneration,
+      insertPokemonHeight: insertPokemonHeight,
+      insertPokemonWeight: insertPokemonWeight,
+
+      insertPokemonTotal: insertPokemonTotal,
+      insertPokemonHp: insertPokemonHp,
+      insertPokemonAttack: insertPokemonAttack,
+      insertPokemonDefense: insertPokemonDefense,
+      insertPokemonSpeAttack: insertPokemonSpeAttack,
+
+      insertPokemonSpeDefense: insertPokemonSpeDefense,
+      insertPokemonSpeed: insertPokemonSpeed,
+      insertPokemonFirstTypeId: insertPokemonFirstTypeId,
+      insertPokemonSecondTypeId: insertPokemonSecondTypeId
     });
   };
 
@@ -118,7 +159,7 @@ function App() {
 
   return ( 
         <div className="form">
-        <h1>CS411 CURD Functions</h1>
+        <h1>CS411 Pokebook</h1>
 
         {/* Insert */}
         <label> Insert </label>
@@ -183,7 +224,7 @@ function App() {
         {/* PokemonSearch */}
         <br></br><label> PokemonSearch </label>
         <label> PokemonName: </label>
-        <input type="text" name="PokemonName1" onChange={(e) => {
+        <input type="text" name="PokemonName2" onChange={(e) => {
           setSearchPokemonName(e.target.value)
         }}/>
         <button onClick={submitPokemonSearch}> Submit Search</button>
@@ -200,6 +241,70 @@ function App() {
           </div>
           );
         })}
+
+        {/* PokemonInsert */}
+        {/* 1 */}
+        <label> PokemonInsert </label>
+        <label> PokemonId: </label>
+        <input type="text" name="PokemonId1" onChange={(e) => {
+          setInsertPokemonId(e.target.value)
+        }}/>
+        <label> PokemonName: </label>
+        <input type="text" name="PokemonName1" onChange={(e) => {
+          setInsertPokemonName(e.target.value)
+        }}/>
+        <label> PokemonGeneration:</label>
+        <input type="text" name="PokemonGeneration1" onChange={(e) => {
+          setInsertPokemonGeneration(e.target.value)
+        }}/>
+        <label> PokemonHeight:</label>
+        <input type="text" name="PokemonHeight1" onChange={(e) => {
+          setInsertPokemonHeight(e.target.value)
+        }}/>
+        <label> PokemonWeight:</label>
+        <input type="text" name="PokemonWeight1" onChange={(e) => {
+          setInsertPokemonWeight(e.target.value)
+        }}/>
+        {/* 2 */}
+        <label> PokemonTotal:</label>
+        <input type="text" name="PokemonTotal1" onChange={(e) => {
+          setInsertPokemonTotal(e.target.value)
+        }}/>
+        <label> PokemonHp: </label>
+        <input type="text" name="PokemonHp1" onChange={(e) => {
+          setInsertPokemonHp(e.target.value)
+        }}/>
+        <label> PokemonAttack:</label>
+        <input type="text" name="PokemonAttack1" onChange={(e) => {
+          setInsertPokemonAttack(e.target.value)
+        }}/>
+        <label> PokemonDefense:</label>
+        <input type="text" name="PokemonDefense1" onChange={(e) => {
+          setInsertPokemonDefense(e.target.value)
+        }}/>
+        <label> PokemonSpeAttack:</label>
+        <input type="text" name="PokemonSpeAttack1" onChange={(e) => {
+          setInsertPokemonSpeAttack(e.target.value)
+        }}/>
+        {/* 3 */}
+        <label> PokemonSpeDefense:</label>
+        <input type="text" name="PokemonSpeDefense" onChange={(e) => {
+          setInsertPokemonSpeDefense(e.target.value)
+        }}/>
+        <label> PokemonSpeed: </label>
+        <input type="text" name="PokemonSpeed1" onChange={(e) => {
+          setInsertPokemonSpeed(e.target.value)
+        }}/>
+        <label> PokemonFirstTypeId:</label>
+        <input type="text" name="PokemonFirstTypeId1" onChange={(e) => {
+          setInsertPokemonFirstTypeId(e.target.value)
+        }}/>
+        <label> PokemonSecondTypeId:</label>
+        <input type="text" name="PokemonSecondTypeId" onChange={(e) => {
+          setInsertPokemonSecondTypeId(e.target.value)
+        }}/>
+
+        <button onClick={submitPokemonInsert}> Submit PokemonInsert</button>
 
         {/* AD 1 */}
         {/* <br></br><label> AD 1 </label>

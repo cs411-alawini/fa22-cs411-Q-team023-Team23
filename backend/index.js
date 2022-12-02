@@ -126,6 +126,34 @@ app.post("/api/insert", (req, res) => {
     })
 });
 
+app.post("/api/pokemoninsert", (req, res) => {
+    const insertPokemonId = req.body.insertPokemonId;
+    const insertPokemonName = req.body.insertPokemonName;
+    const insertPokemonGeneration = req.body.insertPokemonGeneration;
+    const insertPokemonHeight = req.body.insertPokemonHeight;
+    const insertPokemonWeight = req.body.insertPokemonWeight;
+
+    const insertPokemonTotal = req.body.insertPokemonTotal;
+    const insertPokemonHp = req.body.insertPokemonHp;
+    const insertPokemonAttack = req.body.insertPokemonAttack;
+    const insertPokemonDefense = req.body.insertPokemonDefense;
+    const insertPokemonSpeAttack = req.body.insertPokemonSpeAttack;
+
+    const insertPokemonSpeDefense = req.body.insertPokemonSpeDefense;
+    const insertPokemonSpeed = req.body.insertPokemonSpeed;
+    const insertPokemonFirstTypeId = req.body.insertPokemonFirstTypeId;
+    const insertPokemonSecondTypeId = req.body.insertPokemonSecondTypeId;
+
+    const sqlInsert = "INSERT INTO Pokemon (PokemonId, PokemonName, Generation, Height, Weight, Total, Hp, Attack, Defense, SpecialAttack, SpecialDefense, Speed, FirstTypeId, SecondTypeId) \
+    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+    db.query(sqlInsert, [insertPokemonId, insertPokemonName, insertPokemonGeneration, insertPokemonHeight, insertPokemonWeight, 
+        insertPokemonTotal, insertPokemonHp, insertPokemonAttack, insertPokemonDefense, insertPokemonSpeAttack, 
+        insertPokemonSpeDefense, insertPokemonSpeed, insertPokemonFirstTypeId, insertPokemonSecondTypeId], (err, result) => {
+        console.log(insertPokemonId);
+        if (err) console.log(err);
+    })
+});
+
 app.post("/api/delete/:deleteuserId", (req, res) => {
     const DeleteuserId = req.body.deleteuserId;
     db.query('DELETE from User where UserId = ?', [DeleteuserId],
