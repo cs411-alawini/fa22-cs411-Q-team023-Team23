@@ -14,7 +14,7 @@ function App() {
   const [searchuserName, setSearchUserName] = useState('');
   const [searchResult, setSearchResult] = useState('');
   const [userList, setUserList] = useState([]);
-  
+  ////////////////////////////////////////////////////////////////////////////
   // Search Pokemon Table
   const [searchpokemonName, setSearchPokemonName] = useState('');
   const [searchpokemonResult, setSearchPokemonResult] = useState('');
@@ -114,7 +114,7 @@ function App() {
       }
     });
   };
-
+////////////////////////////////////////////////////////////////////////////
   const submitPokemonSearch = () => {
     // console.log("666");
     Axios.post('http://localhost:3002/api/pokemonsearch', {
@@ -128,15 +128,16 @@ function App() {
       }
     });
   };
-
+////////////////////////////////////////////////////////////////////////////
   const submitPokemonTypeSearch = () => {
     // console.log("666");
     Axios.post('http://localhost:3002/api/pokemontypesearch', {
       searchtype1Name: searchtype1Name,
       searchtype2Name: searchtype2Name
     }).then((response) => {
-      if (response.data.length > 0) {
-        setPokemonTypeList(response.data);
+      console.log(response.data);
+      if (response.data[1].length > 0) {
+        setPokemonTypeList(response.data[1]);
         setSearchPokemonTypeResult('Here is your result!\n');
       } else {
         setSearchPokemonTypeResult('No records according to your conditions!\n');
@@ -241,7 +242,7 @@ function App() {
           </div>
           );
         })}
-
+////////////////////////////////////////////////////////////////////////////
         {/* PokemonSearch */}
         <br></br><label> PokemonSearch </label>
         <label> PokemonName: </label>
@@ -262,7 +263,7 @@ function App() {
           </div>
           );
         })}
-
+////////////////////////////////////////////////////////////////////////////
         {/* PokemonTypeSearch */}
         <br></br><label> PokemonTypeSearch </label>
         <label> PokemonType1Name: </label>
@@ -286,6 +287,7 @@ function App() {
             <h3>SecondType: {val.SecondType}</h3> 
             <h3>TheRestraintName: {val.TheRestraintName}</h3> 
             <h3>GenerationStatus: {val.GenerationStatus}</h3> 
+            <br></br>
           </div>
           );
         })}

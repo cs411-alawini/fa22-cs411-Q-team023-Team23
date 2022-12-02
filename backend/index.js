@@ -34,7 +34,7 @@ app.post("/api/search", (req, res) => {
         console.log(result);
     });
 });
-
+////////////////////////////////////////////////////////////////////////////
 app.post("/api/pokemonsearch", (req, res) => {
     const PokemonName = req.body.searchpokemonName;
     // console.log('searching');
@@ -48,7 +48,7 @@ app.post("/api/pokemonsearch", (req, res) => {
         console.log(result);
     });
 });
-
+////////////////////////////////////////////////////////////////////////////
 app.post("/api/pokemontypesearch", (req, res) => {
     const PokemonType1Name = req.body.searchtype1Name;
     const PokemonType2Name = req.body.searchtype2Name;
