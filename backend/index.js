@@ -27,7 +27,18 @@ app.get("/api/get", (req, res) => {
 app.post("/api/search", (req, res) => {
     const UserName = req.body.searchuserName;
     // console.log('searching');
-    db.query('SELECT * FROM User WHERE UserName = ?', [UserName],
+    db.query('SELECT * FROM User WHERE UserName like %?%', [UserName],
+    (err, result) => {
+        if (err) throw err;
+        res.send(result);
+        console.log(result);
+    });
+});
+
+app.post("/api/pokemonsearch", (req, res) => {
+    const PokemonName = req.body.searchpokemonName;
+    // console.log('searching');
+    db.query('SELECT * FROM Pokemon WHERE PokemonName = ?', [PokemonName],
     (err, result) => {
         if (err) throw err;
         res.send(result);

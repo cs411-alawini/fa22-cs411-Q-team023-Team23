@@ -13,6 +13,12 @@ function App() {
   const [searchuserName, setSearchUserName] = useState('');
   const [searchResult, setSearchResult] = useState('');
   const [userList, setUserList] = useState([]);
+  
+  // Pokemon Table
+  const [searchpokemonName, setSearchPokemonName] = useState('');
+  const [searchpokemonResult, setSearchPokemonResult] = useState('');
+  const [pokemonList, setPokemonList] = useState([]);
+  ////
 
   const [advance1Result, setadvance1Result] = useState('');
   const [advance1List, setadvance1List] = useState([]);
@@ -62,7 +68,22 @@ function App() {
     });
   };
 
+  const submitPokemonSearch = () => {
+    // console.log("666");
+    Axios.post('http://localhost:3002/api/pokemonsearch', {
+      searchpokemonName: searchpokemonName
+    }).then((response) => {
+      if (response.data.length > 0) {
+        setPokemonList(response.data);
+        setSearchPokemonResult('Here is your result!\n');
+      } else {
+        setSearchPokemonResult('No records according to your conditions!\n');
+      }
+    });
+  };
+
   const submitAdvance1 = () => {
+    // console.log("666");
     Axios.post('http://localhost:3002/api/advance1search', {
     }).then((response) => {
       if (response.data.length > 0) {
@@ -75,6 +96,7 @@ function App() {
   };
 
   const submitAdvance2 = () => {
+    // console.log("666");
     Axios.post('http://localhost:3002/api/advance2search', {
     }).then((response) => {
       if (response.data.length > 0) {
@@ -158,8 +180,29 @@ function App() {
           );
         })}
 
+        {/* PokemonSearch */}
+        <br></br><label> PokemonSearch </label>
+        <label> PokemonName: </label>
+        <input type="text" name="PokemonName1" onChange={(e) => {
+          setSearchPokemonName(e.target.value)
+        }}/>
+        <button onClick={submitPokemonSearch}> Submit Search</button>
+
+        <div>{searchpokemonResult}</div>
+        {pokemonList.map((val) => {
+          return (
+          <div className='SearchResult'>  
+            <h3>PokemonId: {val.PokemonId}</h3> 
+            <h3>PokemonName: {val.PokemonName}</h3>
+            <h3>Type1: {val.FirstTypeId}</h3> 
+            <h3>Type2: {val.SecondTypeId}</h3> 
+            <h3>Generation: {val.Generation}</h3> 
+          </div>
+          );
+        })}
+
         {/* AD 1 */}
-        <br></br><label> AD 1 </label>
+        {/* <br></br><label> AD 1 </label>
         <button onClick={submitAdvance1}> Submit Advance1 </button>
 
         <div>{advance1Result}</div>
@@ -174,10 +217,10 @@ function App() {
             <h3>AvgDefense: {val.AvgDefense}</h3> 
           </div>
           );
-        })}
+        })} */}
 
         {/* AD 2 */}
-        <br></br><label> AD 2 </label>
+        {/* <br></br><label> AD 2 </label>
         <button onClick={submitAdvance2}> Submit Advance2 </button>
 
         <div>{advance2Result}</div>
@@ -196,7 +239,7 @@ function App() {
             <h3>Generation: {val.Generation}</h3> 
           </div>
           );
-        })}
+        })} */}
 
         </div> )
 }
