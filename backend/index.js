@@ -27,7 +27,7 @@ app.get("/api/get", (req, res) => {
 app.post("/api/search", (req, res) => {
     const UserName = req.body.searchuserName;
     // console.log('searching');
-    db.query('SELECT * FROM User WHERE UserName like %?%', [UserName],
+    db.query('SELECT * FROM User WHERE UserName = ?', [UserName],
     (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -38,7 +38,10 @@ app.post("/api/search", (req, res) => {
 app.post("/api/pokemonsearch", (req, res) => {
     const PokemonName = req.body.searchpokemonName;
     // console.log('searching');
-    db.query('SELECT * FROM Pokemon WHERE PokemonName = ?', [PokemonName],
+    db.query('SELECT PokemonId, PokemonName, t1.TypeName AS "FirstTypeName", t2.TypeName AS "SecondTypeName", Generation \
+    FROM pokebook_database.Pokemon p JOIN pokebook_database.Type t1 ON(p.FirstTypeId=t1.TypeId) \
+    JOIN pokebook_database.Type t2 ON(p.SecondTypeId=t2.TypeId) \
+    WHERE PokemonName = ?', [PokemonName],
     (err, result) => {
         if (err) throw err;
         res.send(result);

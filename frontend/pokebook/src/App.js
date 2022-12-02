@@ -194,8 +194,8 @@ function App() {
           <div className='SearchResult'>  
             <h3>PokemonId: {val.PokemonId}</h3> 
             <h3>PokemonName: {val.PokemonName}</h3>
-            <h3>Type1: {val.FirstTypeId}</h3> 
-            <h3>Type2: {val.SecondTypeId}</h3> 
+            <h3>Type1: {val.FirstTypeName}</h3> 
+            <h3>Type2: {val.SecondTypeName}</h3> 
             <h3>Generation: {val.Generation}</h3> 
           </div>
           );
