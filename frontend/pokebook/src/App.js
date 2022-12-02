@@ -285,7 +285,7 @@ function App() {
             <h3>FirstType: {val.FirstType}</h3> 
             <h3>SecondType: {val.SecondType}</h3> 
             <h3>TheRestraintName: {val.TheRestraintName}</h3> 
-            <h3>SecondType: {val.GenerationStatus}</h3> 
+            <h3>GenerationStatus: {val.GenerationStatus}</h3> 
           </div>
           );
         })}
