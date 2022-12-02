@@ -49,6 +49,19 @@ app.post("/api/pokemonsearch", (req, res) => {
     });
 });
 
+app.post("/api/pokemontypesearch", (req, res) => {
+    const PokemonType1Name = req.body.searchtype1Name;
+    const PokemonType2Name = req.body.searchtype2Name;
+    connection.query("CALL GetRestraintRelation(?,?)", [PokemonType1Name, PokemonType2Name], function (err, result) {
+        if (err) {
+            console.log("err:", err);
+        } else {
+            res.send(result);
+            console.log("results:", result);
+        }
+    });
+});
+
 app.post("/api/advance1search", (req, res) => {
     // console.log('searching');
     db.query(

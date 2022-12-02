@@ -38,6 +38,12 @@ function App() {
   const [insertPokemonFirstTypeId, setInsertPokemonFirstTypeId] = useState('');
   const [insertPokemonSecondTypeId, setInsertPokemonSecondTypeId] = useState('');
 
+  // Search Pokemon by Types
+  const [searchtype1Name, setSearchType1Name] = useState('');
+  const [searchtype2Name, setSearchType2Name] = useState('');
+  const [searchpokemontypeResult, setSearchPokemonTypeResult] = useState('');
+  const [pokemontypeList, setPokemonTypeList] = useState([]);
+
   // AD1
   const [advance1Result, setadvance1Result] = useState('');
   const [advance1List, setadvance1List] = useState([]);
@@ -119,6 +125,21 @@ function App() {
         setSearchPokemonResult('Here is your result!\n');
       } else {
         setSearchPokemonResult('No records according to your conditions!\n');
+      }
+    });
+  };
+
+  const submitPokemonTypeSearch = () => {
+    // console.log("666");
+    Axios.post('http://localhost:3002/api/pokemontypesearch', {
+      searchtype1Name: searchtype1Name,
+      searchtype2Name: searchtype2Name
+    }).then((response) => {
+      if (response.data.length > 0) {
+        setPokemonTypeList(response.data);
+        setSearchPokemonTypeResult('Here is your result!\n');
+      } else {
+        setSearchPokemonTypeResult('No records according to your conditions!\n');
       }
     });
   };
@@ -238,6 +259,33 @@ function App() {
             <h3>Type1: {val.FirstTypeName}</h3> 
             <h3>Type2: {val.SecondTypeName}</h3> 
             <h3>Generation: {val.Generation}</h3> 
+          </div>
+          );
+        })}
+
+        {/* PokemonTypeSearch */}
+        <br></br><label> PokemonTypeSearch </label>
+        <label> PokemonType1Name: </label>
+        <input type="text" name="PokemonTypeName1" onChange={(e) => {
+          setSearchType1Name(e.target.value)
+        }}/>
+        <label> PokemonType2Name: </label>
+        <input type="text" name="PokemonTypeName2" onChange={(e) => {
+          setSearchType2Name(e.target.value)
+        }}/>
+        <button onClick={submitPokemonTypeSearch}> Submit Search</button>
+
+        <div>{searchpokemontypeResult}</div>
+        {pokemontypeList.map((val) => {
+          return (
+          <div className='SearchResult'>  
+            <h3>PokemonId: {val.PokemonId}</h3> 
+            <h3>PokemonName: {val.PokemonName}</h3>
+            <h3>Generation: {val.Generation}</h3> 
+            <h3>FirstType: {val.FirstType}</h3> 
+            <h3>SecondType: {val.SecondType}</h3> 
+            <h3>TheRestraintName: {val.TheRestraintName}</h3> 
+            <h3>SecondType: {val.GenerationStatus}</h3> 
           </div>
           );
         })}
