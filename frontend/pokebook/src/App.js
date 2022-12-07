@@ -360,25 +360,28 @@ function App() {
         <button onClick={submitPokemonInsert}> Submit PokemonInsert</button>
 
         {/* AD 1 */}
-        {/* <br></br><label> AD 1 </label>
+        <br></br>
+        <br></br><label><h3>AD 1</h3>  </label>
         <button onClick={submitAdvance1}> Submit Advance1 </button>
 
         <div>{advance1Result}</div>
         {advance1List.map((val) => {
           return (
           <div className='Advance1Result'> 
-            <h3>TypeName: {val.TypeName}</h3> 
+            <h3>FirstType: {val.TypeName}</h3> 
             <h3>PokemonName: {val.PokemonName}</h3>
             <h3>Attack: {val.Attack}</h3> 
             <h3>AvgAttack: {val.AvgAttack}</h3> 
             <h3>Defense: {val.Defense}</h3> 
             <h3>AvgDefense: {val.AvgDefense}</h3> 
+            <br></br>
           </div>
           );
-        })} */}
+        })}
 
         {/* AD 2 */}
-        {/* <br></br><label> AD 2 </label>
+        <br></br>
+        <br></br><label><h3>AD 2</h3>  </label>
         <button onClick={submitAdvance2}> Submit Advance2 </button>
 
         <div>{advance2Result}</div>
@@ -386,8 +389,8 @@ function App() {
           return (
           <div className='Advance2Result'> 
             <h3>PokemonName: {val.PokemonName}</h3> 
-            <h3>FirstTypeName: {val.FirstTypeName}</h3>
-            <h3>SecondTypeName: {val.SecondTypeName}</h3> 
+            <h3>FirstType: {val.FirstTypeName}</h3>
+            <h3>SecondType: {val.SecondTypeName}</h3> 
             <h3>Hp: {val.Hp}</h3> 
             <h3>Attack: {val.Attack}</h3> 
             <h3>Defense: {val.Defense}</h3> 
@@ -395,9 +398,10 @@ function App() {
             <h3>SpecialDefense: {val.SpecialDefense}</h3> 
             <h3>Speed: {val.Speed}</h3> 
             <h3>Generation: {val.Generation}</h3> 
+            <br></br>
           </div>
           );
-        })} */}
+        })}
 
         </div> )
 }
