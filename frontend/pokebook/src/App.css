@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+h2.headertekst {
+  text-align: center;
+}
+
+img.imgloc {
+  right: 3px;
+}

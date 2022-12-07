@@ -183,8 +183,9 @@ function App() {
         <div className="form">
         <h1>CS411 Pokebook</h1>
 
+        <h2 class="headertekst">USER CURD</h2>
         {/* Insert */}
-        <label> Insert </label>
+        <br></br><label> Insert </label>
         <label> UserId: </label>
         <input type="text" name="userId1" onChange={(e) => {
           setInsertUserId(e.target.value)
@@ -242,10 +243,12 @@ function App() {
           </div>
           );
         })}
-////////////////////////////////////////////////////////////////////////////
+        <br></br><label><h2>-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</h2></label>
+
+        <h2 class="headertekst">Pokemon</h2>
         {/* PokemonSearch */}
-        <br></br><label> PokemonSearch </label>
-        <label> PokemonName: </label>
+        <br></br><label><h2>Search Pokemon</h2> </label>
+        <br></br><label> PokemonName: </label>
         <input type="text" name="PokemonName2" onChange={(e) => {
           setSearchPokemonName(e.target.value)
         }}/>
@@ -263,14 +266,14 @@ function App() {
           </div>
           );
         })}
-////////////////////////////////////////////////////////////////////////////
+
         {/* PokemonTypeSearch */}
-        <br></br><label> PokemonTypeSearch </label>
-        <label> PokemonType1Name: </label>
+        <br></br><label><h2>Search by Type</h2> </label>
+        <br></br><label> TypeName1: </label>
         <input type="text" name="PokemonTypeName1" onChange={(e) => {
           setSearchType1Name(e.target.value)
         }}/>
-        <label> PokemonType2Name: </label>
+        <br></br><label> TypeName2: </label>
         <input type="text" name="PokemonTypeName2" onChange={(e) => {
           setSearchType2Name(e.target.value)
         }}/>
@@ -280,12 +283,12 @@ function App() {
         {pokemontypeList.map((val) => {
           return (
           <div className='SearchResult'>  
-            <h3>PokemonId: {val.PokemonId}</h3> 
-            <h3>PokemonName: {val.PokemonName}</h3>
+            <h3>Id: {val.PokemonId}</h3> 
+            <h3>Name: {val.PokemonName}</h3>
             <h3>Generation: {val.Generation}</h3> 
-            <h3>FirstType: {val.FirstType}</h3> 
-            <h3>SecondType: {val.SecondType}</h3> 
-            <h3>TheRestraintName: {val.TheRestraintName}</h3> 
+            <h3>TypeName1: {val.FirstType}</h3> 
+            <h3>TypeName2: {val.SecondType}</h3> 
+            <h3>RestraintName: {val.TheRestraintName}</h3> 
             <h3>GenerationStatus: {val.GenerationStatus}</h3> 
             <br></br>
           </div>
@@ -294,62 +297,62 @@ function App() {
 
         {/* PokemonInsert */}
         {/* 1 */}
-        <label> PokemonInsert </label>
-        <label> PokemonId: </label>
+        <label><h2> Insert Pokemon </h2></label>
+        <br></br><label> Id: </label>
         <input type="text" name="PokemonId1" onChange={(e) => {
           setInsertPokemonId(e.target.value)
         }}/>
-        <label> PokemonName: </label>
+        <br></br><label> Name: </label>
         <input type="text" name="PokemonName1" onChange={(e) => {
           setInsertPokemonName(e.target.value)
         }}/>
-        <label> PokemonGeneration:</label>
+        <br></br><label> Generation:</label>
         <input type="text" name="PokemonGeneration1" onChange={(e) => {
           setInsertPokemonGeneration(e.target.value)
         }}/>
-        <label> PokemonHeight:</label>
+        <br></br><label> Height:</label>
         <input type="text" name="PokemonHeight1" onChange={(e) => {
           setInsertPokemonHeight(e.target.value)
         }}/>
-        <label> PokemonWeight:</label>
+        <br></br><label> Weight:</label>
         <input type="text" name="PokemonWeight1" onChange={(e) => {
           setInsertPokemonWeight(e.target.value)
         }}/>
         {/* 2 */}
-        <label> PokemonTotal:</label>
+        <br></br><label> Total:</label>
         <input type="text" name="PokemonTotal1" onChange={(e) => {
           setInsertPokemonTotal(e.target.value)
         }}/>
-        <label> PokemonHp: </label>
+        <br></br><label> Hp: </label>
         <input type="text" name="PokemonHp1" onChange={(e) => {
           setInsertPokemonHp(e.target.value)
         }}/>
-        <label> PokemonAttack:</label>
+        <br></br><label> Attack:</label>
         <input type="text" name="PokemonAttack1" onChange={(e) => {
           setInsertPokemonAttack(e.target.value)
         }}/>
-        <label> PokemonDefense:</label>
+        <br></br><label> Defense:</label>
         <input type="text" name="PokemonDefense1" onChange={(e) => {
           setInsertPokemonDefense(e.target.value)
         }}/>
-        <label> PokemonSpeAttack:</label>
+        <br></br><label> SpeAttack:</label>
         <input type="text" name="PokemonSpeAttack1" onChange={(e) => {
           setInsertPokemonSpeAttack(e.target.value)
         }}/>
         {/* 3 */}
-        <label> PokemonSpeDefense:</label>
+        <br></br><label> SpeDefense:</label>
         <input type="text" name="PokemonSpeDefense" onChange={(e) => {
           setInsertPokemonSpeDefense(e.target.value)
         }}/>
-        <label> PokemonSpeed: </label>
+        <br></br><label> Speed: </label>
         <input type="text" name="PokemonSpeed1" onChange={(e) => {
           setInsertPokemonSpeed(e.target.value)
         }}/>
-        <label> PokemonFirstTypeId:</label>
+        <br></br><label> TypeId1:</label>
         <input type="text" name="PokemonFirstTypeId1" onChange={(e) => {
           setInsertPokemonFirstTypeId(e.target.value)
         }}/>
-        <label> PokemonSecondTypeId:</label>
+        <br></br><label> TypeId2:</label>
         <input type="text" name="PokemonSecondTypeId" onChange={(e) => {
           setInsertPokemonSecondTypeId(e.target.value)
         }}/>
